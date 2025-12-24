@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   },
 }
 
+import { Navbar } from '@/components/navbar'
+
 export default function RootLayout({
   children,
 }: {
@@ -22,7 +24,18 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className="min-h-screen bg-white text-gray-900">
-        {children}
+        <Navbar />
+        <main className="pt-16">
+          {children}
+        </main>
+        <footer className="bg-gray-50 border-t border-gray-200 py-8 mt-16">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <p className="text-gray-600 text-sm"> 2025 EventHub - Todos os direitos reservados</p>
+            <p className="text-gray-500 text-xs mt-1">
+              Dados fornecidos pela Ticketmaster Discovery API
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   )
