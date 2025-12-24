@@ -3,6 +3,7 @@ import type {
   TicketmasterClassification,
   TicketmasterPriceRange,
   TicketmasterEvent,
+  SavedEvent,
   EventStatus,
   EventPrice,
   Countdown
@@ -67,7 +68,7 @@ export function getEventPrice(priceRanges: TicketmasterPriceRange[] | undefined)
   }
 }
 
-export function getEventStatus(event: TicketmasterEvent): EventStatus {
+export function getEventStatus(event: TicketmasterEvent | SavedEvent): EventStatus {
   const startDate = new Date(event.dates?.start?.dateTime || event.dates?.start?.localDate)
   const now = new Date()
   
@@ -83,7 +84,7 @@ export function getEventStatus(event: TicketmasterEvent): EventStatus {
     return 'Encerrado'
   }
   
-  if (event.sales?.public?.endDateTime) {
+  if ('sales' in event && event.sales?.public?.endDateTime) {
     const salesEnd = new Date(event.sales.public.endDateTime)
     if (salesEnd < now) {
       return 'Esgotado'

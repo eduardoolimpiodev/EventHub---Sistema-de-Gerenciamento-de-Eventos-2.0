@@ -7,7 +7,7 @@ import { formatDate, formatPrice, getEventImage, getEventPrice, getEventStatus }
 import type { TicketmasterEvent, SavedEvent } from '@/types/event'
 
 interface EventCardProps {
-  event: TicketmasterEvent
+  event: TicketmasterEvent | SavedEvent
 }
 
 export function EventCard({ event }: EventCardProps) {
