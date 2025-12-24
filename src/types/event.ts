@@ -26,6 +26,7 @@ export interface TicketmasterVenue {
   locale?: string
   postalCode?: string
   timezone?: string
+  parkingDetail?: string
   city?: {
     name: string
   }
@@ -44,6 +45,16 @@ export interface TicketmasterVenue {
     longitude: string
     latitude: string
   }
+}
+
+export interface TicketmasterAttraction {
+  id: string
+  name: string
+  type: string
+  url?: string
+  locale?: string
+  images?: TicketmasterImage[]
+  classifications?: TicketmasterClassification[]
 }
 
 export interface TicketmasterClassification {
@@ -98,6 +109,7 @@ export interface TicketmasterEvent {
   pleaseNote?: string
   _embedded?: {
     venues?: TicketmasterVenue[]
+    attractions?: TicketmasterAttraction[]
   }
 }
 
@@ -132,6 +144,7 @@ export interface SavedEvent {
   dates: TicketmasterDate
   _embedded?: {
     venues?: TicketmasterVenue[]
+    attractions?: TicketmasterAttraction[]
   }
   priceRanges?: TicketmasterPriceRange[]
   url: string
